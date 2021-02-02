@@ -1,0 +1,69 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>personaActualizar</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+
+  <form>
+    <ion-grid>
+      <ion-row>
+        <ion-col >
+          <h1>Actualizar persona</h1>
+        </ion-col>
+      </ion-row>
+
+        <ion-col >
+          <ion-item>
+            <ion-label position="floating">Identificacion</ion-label>
+            <ion-input type="text"   name="identificacion"   [(ngModel)]="persona.identificacion"   ></ion-input>
+          </ion-item>
+        </ion-col>
+
+        <ion-col >
+          <ion-item>
+            <ion-label position="floating">Nombre</ion-label>
+            <ion-input type="text"   name="nombre"   [(ngModel)]="persona.nombre"></ion-input>
+          </ion-item>
+        </ion-col>
+
+        <ion-col >
+          <ion-item>
+            <ion-label position="floating">Edad</ion-label>
+            <ion-input type="number"   name="edad"   [(ngModel)]="persona.edad"></ion-input>
+          </ion-item>
+        </ion-col>
+
+        <ion-col >
+          <ion-item>
+            <ion-label position="floating">Sexo</ion-label>
+            <ion-input type="text"   name="sexo"    [(ngModel)]="persona.sexo" class="form-control"></ion-input>
+          </ion-item>
+        </ion-col>
+
+        <ion-col >
+          <ion-item>
+            <ion-label position="floating">Pulsaciones:</ion-label>
+            <ion-input type="number"   name="pulsacion"   [(ngModel)]="persona.pulsacion"  class="form-control">
+            </ion-input>
+          </ion-item>
+        </ion-col>
+      <!--</ion-row>-->
+      </ion-grid>
+
+      <br>
+      <br>
+      <ion-button  color="success">
+        <ion-icon slot="start"  name="pencil"></ion-icon>
+        Actualizar
+      </ion-button>   
+
+      <ion-button type="reset"  color="success">
+        <ion-icon slot="start" name="close"></ion-icon>
+        Cancelar 
+      </ion-button><br>
+      <br>
+  </form>
+
+ </ion-content>

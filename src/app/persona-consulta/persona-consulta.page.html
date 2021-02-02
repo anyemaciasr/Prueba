@@ -1,0 +1,47 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>personaConsulta</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+
+ <div class="row">
+    <div class="col-6" >
+      <ion-searchbar id="buscar" showCancelButton="focus"  [(ngModel)]="searchText" type="text"  class="form-control"  placeholder="Nombre"></ion-searchbar>
+     
+    </div>
+  </div>
+  <hr>
+
+  <ion-grid>
+    <ion-row>
+      <div class="container " class="row header">
+        <table id="myTable">
+          <thead>
+            <tr>
+              <th scope="col"># </th>
+              <th scope="col">Identificacion </th>
+              <th scope="col">Nombre </th>
+              <th scope="col">Edad </th>
+              <th scope="col">Sexo </th>
+              <th scope="col">Pulsaciones </th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let persona of personas; index as i "></tr>
+              <td></td>
+              <td>{{ persona.identificacion }} </td>
+              <td>{{ persona.nombre }}</td>
+              <td>{{persona.sexo  }}</td>
+              <td>{{ persona.edad  }}</td>
+              <td>{{ persona.pulsacion  }}</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </ion-row>
+  </ion-grid>
+
+  
+</ion-content>
