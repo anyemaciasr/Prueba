@@ -1,17 +1,41 @@
 import { Injectable } from '@angular/core';
-import { HttpClient} from '@angular/common/http';
-import { HttpClientModule } from '@angular/common/http';
+import { HttpClient, HttpErrorResponse, HttpHeaders} from '@angular/common/http';
+import { Persona } from '../models/persona';
+import { Observable, throwError } from 'rxjs';
+import {retry, catchError, tap} from 'rxjs/operators';
 
 @Injectable({
   providedIn: 'root'
 })
 export class PersonaService {
-
+  url="https://localhost:5001/Persona";
+  
   constructor(public http: HttpClient) { }
 
-  get(){
-    const url="https://localhost:5001/Personas";
-    return this.http.get(url);
+  httpOptions = {
+    headers: new HttpHeaders({
+      'Content-type': 'aplication/json'
+    })
+  }
+
+  handleError(error:HttpErrorResponse){
+    if(error.error instanceof ErrorEvent){
+      console.error('An error ocurred', error.error.message);
+    }else{
+      console.error(
+        `Backend returned code ${error.status}`+
+        `Body was: ${error.error}`
+      );
+    }
+    return throwError('Something bad happened; please try again later');
+  }
+
+  get():Observable<Persona[]>{
+    return this.http.get<Persona[]>(this.url);
+  }
+
+  post(persona:Persona):Observable<Persona>{
+    return this.http.post<Persona>(this.url, JSON.stringify(persona));
   }
   
 }
