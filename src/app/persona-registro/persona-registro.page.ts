@@ -9,13 +9,18 @@ import { PersonaService } from '../services/persona.service';
 })
 export class PersonaRegistroPage implements OnInit {
   persona:Persona;
+  personaDevuelta
   constructor(private personaService: PersonaService) { }
 
   ngOnInit() {
-    this.persona= new  Persona();
+    this.persona = new  Persona();
   }
   add() {
-   
+    this.personaService.post(this.persona).subscribe(
+      (datos) => {this.persona = datos;},
+      (error) => {console.log(error)}
+    );
+    
   }
 
 }

@@ -1,21 +1,35 @@
 <ion-header>
   <ion-toolbar>
-    <ion-title>personaConsulta</ion-title>
+    <ion-title>Personas</ion-title>
   </ion-toolbar>
 </ion-header>
 
 <ion-content>
 
- <div class="row">
-    <div class="col-6" >
-      <ion-searchbar id="buscar" showCancelButton="focus"  [(ngModel)]="searchText" type="text"  class="form-control"  placeholder="Nombre"></ion-searchbar>
-     
+  <div class="row">
+    <div class="col-6">
+      <ion-searchbar id="buscar" showCancelButton="focus"  [(ngModel)]="searchText" type="text"  class="form-control"
+         placeholder="Nombre"></ion-searchbar>
+
     </div>
   </div>
-  <hr>
+  <ion-list-header>
+    Usuarios recientes
+  </ion-list-header>
+      <ion-list>
+        <ion-item *ngFor="let persona of personas; index as i ">
+          <ion-avatar slot="start">
+            <img src="../../assets/persona.svg">
+          </ion-avatar>
+          <ion-label>
+            <h2>{{persona.nombre}}</h2>
+            <h3>{{persona.identificacion}}</h3>
+            <p>Tienes <b>{{persona.pulsaciones}}</b> pulsaciones</p>
+          </ion-label>
+        </ion-item>
+      </ion-list>
 
-  <ion-grid>
-    <ion-row>
+      <!--
       <div class="container " class="row header">
         <table id="myTable">
           <thead>
@@ -29,8 +43,8 @@
             </tr>
           </thead>
           <tbody>
-            <tr *ngFor="let persona of personas; index as i "></tr>
-              <td></td>
+            <tr *ngFor="let persona of personas; index as i ">
+              <td>{{i+1}}</td>
               <td>{{ persona.identificacion }} </td>
               <td>{{ persona.nombre }}</td>
               <td>{{persona.sexo  }}</td>
@@ -39,9 +53,8 @@
             </tr>
           </tbody>
         </table>
-      </div>
-    </ion-row>
-  </ion-grid>
+      </div>-->
+    
 
-  
+
 </ion-content>
