@@ -17,15 +17,18 @@
     Usuarios recientes
   </ion-list-header>
       <ion-list>
-        <ion-item *ngFor="let persona of personas; index as i ">
+        <ion-item *ngFor="let persona of personas|filtroPersonas:searchText; index as i ">
           <ion-avatar slot="start">
-            <img src="../../assets/persona.svg">
+            <ion-icon name="person-circle-outline"></ion-icon>
           </ion-avatar>
           <ion-label>
             <h2>{{persona.nombre}}</h2>
             <h3>{{persona.identificacion}}</h3>
             <p>Tienes <b>{{persona.pulsaciones}}</b> pulsaciones</p>
           </ion-label>
+          <ion-avatar (click)="delete(persona.identificacion)" slot="end">
+            <ion-icon vertical="center" id="iconoEliminar" name="trash-outline"></ion-icon>
+          </ion-avatar>
         </ion-item>
       </ion-list>
 

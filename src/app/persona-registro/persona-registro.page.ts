@@ -9,7 +9,6 @@ import { PersonaService } from '../services/persona.service';
 })
 export class PersonaRegistroPage implements OnInit {
   persona:Persona;
-  personaDevuelta
   constructor(private personaService: PersonaService) { }
 
   ngOnInit() {
@@ -17,9 +16,10 @@ export class PersonaRegistroPage implements OnInit {
   }
   add() {
     this.personaService.post(this.persona).subscribe(
-      (datos) => {this.persona = datos;},
-      (error) => {console.log(error)}
-    );
+      response => {
+        console.log(response);
+        this.persona = response;
+      });
     
   }
 

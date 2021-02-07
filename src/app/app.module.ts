@@ -9,9 +9,11 @@ import { StatusBar } from '@ionic-native/status-bar/ngx';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { HttpClientModule } from '@angular/common/http';
+import { FiltroPersonasPipe } from './pipe/filtro-personas.pipe';
+
 
 @NgModule({
-  declarations: [AppComponent],
+  declarations: [AppComponent, FiltroPersonasPipe],
   entryComponents: [],
   imports: [BrowserModule, IonicModule.forRoot(), AppRoutingModule, HttpClientModule],
   providers: [

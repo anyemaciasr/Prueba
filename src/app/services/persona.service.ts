@@ -14,7 +14,7 @@ export class PersonaService {
 
   httpOptions = {
     headers: new HttpHeaders({
-      'Content-type': 'aplication/json'
+      'Content-type': 'application/json'
     })
   }
 
@@ -35,7 +35,19 @@ export class PersonaService {
   }
 
   post(persona:Persona):Observable<Persona>{
-    return this.http.post<Persona>(this.url, JSON.stringify(persona));
+    return this.http.post<Persona>(this.url, JSON.stringify(persona), this.httpOptions)
+    .pipe(
+      tap(_ => console.log("Datos enviados")),
+      catchError(this.handleError)
+    );
+  }
+
+  delete(id:string){
+    return this.http.delete<string>(this.url + '/'+ id, this.httpOptions)
+    .pipe(
+      tap(_ => console.log("Persona eliminada")),
+      catchError(this.handleError)
+    );
   }
   
 }

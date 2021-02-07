@@ -7,8 +7,9 @@ import { Location } from '@angular/common';
   templateUrl: './persona-consulta.page.html',
   styleUrls: ['./persona-consulta.page.scss'],
 })
-export class PersonaConsultaPage implements OnInit {
+export class PersonaConsultaPage {
   personas:Persona[];
+  searchText:string;
   constructor(private personaService: PersonaService,private location:Location) { }
 
   ngOnInit() {
@@ -17,11 +18,19 @@ export class PersonaConsultaPage implements OnInit {
 
   get(){
     this.personaService.get().subscribe(
-      (Datos)=>{this.personas=Datos;},
-      (error)=>{console.log(error);}
-    )
+      Datos=>{
+        console.log(Datos); 
+        this.personas=Datos;
+        console.log("Datos recibidos");
+      })
   }
   volver(){
     this.location.back();
+  }
+  delete(id:string){
+    this.personaService.delete(id).subscribe(
+      response => {console.log(response)}
+    )
+    this.get();
   }
 }
